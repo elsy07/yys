@@ -1,0 +1,24 @@
+<view bind:tap="onClickMe" class="me">
+  <image src="{{userInfo.avatarUrl}}" />
+</view>
+<view class="page-body">
+  <view wx:if="{{dataIsLoaded}}">
+    <view wx:if="{{isApprove}}">
+      <wux-cell-group title="功能列表">
+        <wux-cell title="交换碎片" is-link url="/pages/shikigami/shikigami" open-type="navigateTo"></wux-cell>
+        <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
+
+      </wux-cell-group>
+    </view>
+
+    <view class="no-permission-wrap" wx:if="{{!isApply}}">
+      <text>嘤嘤嘤</text>
+      <navigator class="btn" hoverClass="none" url="/pages/apply/apply">申请加入</navigator>
+    </view>
+    <view class="no-permission-wrap" wx:if="{{!isApprove}}">
+      <text>你已申请，请等待管理员的审批</text>
+
+    </view>
+
+  </view>
+</view>

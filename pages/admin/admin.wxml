@@ -1,0 +1,11 @@
+<view class="item" wx:for="{{members}}" wx:key="{{index}}">
+    <view>
+        <view>{{item.yys_name}}({{item.user.nickname}})</view>
+        <view>#{{item.yys_id}}</view>
+    </view>
+    <view> 
+        <view bindtap="onAllow" class="btn-allow" data-id="{{item.user.id}}" wx:if="{{item.state==0}}">审核通过</view>
+        <view bindtap="onDelete" class="btn-delete" data-id="{{item.user.id}}" wx:if="{{item.state==1}}">踢出</view>
+        <view bindtap="onEdit" class="btn-edit" data-id="{{item.user.id}}" wx:if="{{item.state==2}}">改名确认</view>
+    </view>
+</view>

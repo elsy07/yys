@@ -1,0 +1,36 @@
+page {
+  background: #000000;
+}
+
+
+.shikigami {
+    width: 690rpx;
+    background-color: rgba(255,255,255,.2);
+    box-sizing: border-box;
+    border-radius: 10rpx;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0rpx;
+}
+
+.shikigami .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30rpx;
+    margin-bottom: 30rpx;
+    color: #eee;
+    font-size: 26rpx;
+}
+
+.shikigami image {
+    width: 135rpx;
+    height: 135rpx;
+    margin-bottom: 10rpx;
+    border-radius: 50%;
+    border: 1rpx solid #313045;
+    box-sizing: border-box;
+}

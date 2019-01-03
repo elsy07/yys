@@ -1,0 +1,7 @@
+{
+      "usingComponents": {
+        "wux-icon": "../../assets/dist/icon/index",
+        "wux-grids": "../../assets/dist/grids/index",
+        "wux-grid": "../../assets/dist/grid/index"
+      }
+}

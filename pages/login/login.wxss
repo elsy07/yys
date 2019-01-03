@@ -1,0 +1,31 @@
+/**index.wxss**/
+page {
+  background: #000000;
+}
+
+.go-regiseter {
+    position: absolute;
+    left: 0;
+    bottom: 300rpx;
+    width: 100%;
+    padding: 0;
+    color: #fff;
+    font-size: 48rpx;
+    text-align: center;
+    background: none;
+}
+
+#userinfo{
+  position: absolute;
+  bottom: 300rpx;
+  left: 328rpx; 
+  width: 103rpx;
+  height: 125rpx;
+  background-color: rgba(248, 248, 248, 0.377);
+  border:none;
+  background-image: url("https://cloud-minapp-19753.cloud.ifanrusercontent.com/1fz16VladieRoaKV.png");
+  background-size: 103rpx 125rpx;
+  background-repeat:no-repeat;
+  z-index: 20;
+}
+

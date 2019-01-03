@@ -1,0 +1,78 @@
+.user-info {
+    position: relative;
+    width: 100%;
+    height: 320rpx;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.user-info .filter-wrap {
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    filter: blur(30px);
+}
+
+.user-info .user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(59,23,58,0.3);
+}
+
+.user-info .avatar {
+    width: 120rpx;
+    height: 120rpx;
+    margin-bottom: 12rpx;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+.user-info .name {
+    font-size: 30rpx;
+    color: #eee;
+}
+
+.user-content {
+    position: relative;
+    background-color: #fff;
+}
+
+.user-content .line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 88rpx;
+    padding: 0 30rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.user-content .line:not(:last-child) {
+    border-bottom: 1rpx solid #eaeaea;
+}
+
+.line .icon {
+    display: block;
+    width: 56rpx;
+    height: 56rpx;
+    margin-right: 30rpx;
+}
+
+.line text {
+    flex: 1;
+}
+
+.right-icon {
+    width: 16rpx;
+    height: 28rpx;
+}

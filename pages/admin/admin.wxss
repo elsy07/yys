@@ -1,0 +1,41 @@
+view {
+    font-size: 30rpx;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+    padding: 0 30rpx;
+}
+
+.btn-allow {
+    width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    color: #fff;
+    background-color: #34A853;
+}
+
+.btn-edit {
+    width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    color: #fff;
+    background-color: deepskyblue;
+}
+
+.btn-delete {
+    width: 200rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    color: #fff;
+    background-color: grey;
+}

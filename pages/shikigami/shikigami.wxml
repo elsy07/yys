@@ -1,0 +1,14 @@
+<view class="container" wx:if="{{dataIsLoaded}}">
+    <view class="content">
+        <view class="shikigami">
+            <scroll-view scrollY style="height: 1060rpx">
+                <view class="list">             
+                    <navigator class="item" data-id="{{item.num}}" hoverClass="none" url="/pages/fragments/fragments?id={{item.num}}&name={{item.name}}" wx:for="{{shikigami}}" wx:key="{{item.num}}">
+                        <image src="{{item.avatar.path}}"></image>
+                        <text>{{item.name}}</text>
+                    </navigator>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,23 @@
+{
+  "pages":[
+    "pages/login/login",
+    "pages/index/index",
+    "pages/shikigami/shikigami",
+    "pages/fragments/fragments",
+    "pages/apply/apply",
+    "pages/mine/mine",
+    "pages/admin/admin"
+  ],
+  "plugins": {
+    "sdkPlugin": {
+      "version": "1.13.1",
+      "provider": "wxc6b86e382a1e3294"
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

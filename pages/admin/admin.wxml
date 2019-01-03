@@ -7,7 +7,7 @@
         <view bindtap="onAllow" class="btn-allow" data-id="{{item.id}}" wx:if="{{item.state==0}}">审核通过</view>
         <view bindtap="onDelete" class="btn-delete" data-id="{{item.id}}" wx:if="{{item.state==0}}">审核驳回</view>
         <view bindtap="onDelete" class="btn-delete" data-id="{{item.id}}" wx:if="{{item.state==1}}">踢出</view>
+        <view bindtap="onAdmin" class="btn-edit" data-id="{{item.id}}" wx:if="{{item.state==1 && item.is_admin==false}}">设为管理员</view>
         <view bindtap="onAllow" class="btn-allow" data-id="{{item.id}}" wx:if="{{item.state==2}}">改名确认</view>
-        <view bindtap="onReject" class="btn-reject" data-id="{{item.id}}" wx:if="{{item.state==2}}">改名驳回</view>
     </view>
 </view>

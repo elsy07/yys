@@ -16,6 +16,7 @@ Page({
     let member = Membership.getWithoutData(e.target.dataset.id)
     member.set({
       state: 1,
+      is_apprrove: true
     })
     member.update().then(res => {
       // success
@@ -36,19 +37,19 @@ Page({
     this.getMembers()
   },
 
-  // 改名驳回
-  onReject: function(e) {
-    console.log("改名", e.target.dataset.id)
-    //状态置为 1=良民
+  //设为管理员
+  onAdmin: function (e) {
+    console.log("设为管理员", e.target.dataset.id)
+    //isAdmin标志位设置为true
     let Membership = new wx.BaaS.TableObject(61452)
     let member = Membership.getWithoutData(e.target.dataset.id)
     member.set({
-      state: 1,
+      is_admin: true
     })
     member.update().then(res => {
       // success
       wx.showToast({
-        title: '已通过',
+        title: '已设置',
         icon: 'success',
         duration: 2000
       })
@@ -64,10 +65,10 @@ Page({
     this.getMembers()
   },
 
-  //踢出
+  //审核驳回 & 踢出
   onDelete: function(e) {
     console.log("踢出", e.target.dataset.id)
-    //同意
+    //不同意
     let Membership = new wx.BaaS.TableObject(61452)
     Membership.delete(e.target.dataset.id).then(res => {
       // success

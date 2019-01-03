@@ -15,7 +15,7 @@
       <text>嘤嘤嘤</text>
       <navigator class="btn" hoverClass="none" url="/pages/apply/apply">申请加入</navigator>
     </view>
-    <view class="no-permission-wrap" wx:if="{{!isApprove}}">
+    <view class="no-permission-wrap" wx:if="{{isApply && !isApprove}}">
       <text>你已申请，请等待管理员的审批</text>
 
     </view>

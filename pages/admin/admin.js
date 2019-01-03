@@ -5,19 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    members:{},
+    members: {},
   },
-  
-  //审核通过
-  onAllow: function(e){
+
+  //审核通过 & 改名通过
+  onAllow: function(e) {
     console.log("同意", e.target.dataset.id)
-    //同意
+    //状态置为 1=良民
     let Membership = new wx.BaaS.TableObject(61452)
-    var User = new wx.BaaS.User()
-    let uid = wx.BaaS.storage.get("uid")
-    let query = new wx.BaaS.Query()
-    query.compare('user', '=', User.getWithoutData(uid))
-    let member = Membership.getWithoutData(query)
+    let member = Membership.getWithoutData(e.target.dataset.id)
     member.set({
       state: 1,
     })
@@ -30,26 +26,22 @@ Page({
       })
     }, err => {
       // err
-      console.err(err)
+      console.log(err)
       wx.showToast({
-        title: err,
+        title: '失败',
         icon: 'fail',
         duration: 2000
       })
     })
-
+    this.getMembers()
   },
 
-  // 改名确认
-  onEdit: function (e) {
+  // 改名驳回
+  onReject: function(e) {
     console.log("改名", e.target.dataset.id)
-    //同意
+    //状态置为 1=良民
     let Membership = new wx.BaaS.TableObject(61452)
-    var User = new wx.BaaS.User()
-    let uid = wx.BaaS.storage.get("uid")
-    let query = new wx.BaaS.Query()
-    query.compare('user', '=', User.getWithoutData(uid))
-    let member = Membership.getWithoutData(query)
+    let member = Membership.getWithoutData(e.target.dataset.id)
     member.set({
       state: 1,
     })
@@ -62,26 +54,22 @@ Page({
       })
     }, err => {
       // err
-      console.err(err)
+      console.log(err)
       wx.showToast({
-        title: err,
+        title: '失败',
         icon: 'fail',
         duration: 2000
       })
     })
+    this.getMembers()
   },
-  
+
   //踢出
-  onDelete: function (e) {
-    console.log("踢出",e.target.dataset.id)
+  onDelete: function(e) {
+    console.log("踢出", e.target.dataset.id)
     //同意
     let Membership = new wx.BaaS.TableObject(61452)
-    var User = new wx.BaaS.User()
-    let uid = wx.BaaS.storage.get("uid")
-    let query = new wx.BaaS.Query()
-    query.compare('user', '=', User.getWithoutData(uid))
-    
-    Membership.delete(query).then(res => {
+    Membership.delete(e.target.dataset.id).then(res => {
       // success
       console.log(res)
       wx.showToast({
@@ -91,19 +79,17 @@ Page({
       })
     }, err => {
       // err
-      console.err(err)
+      console.log(err)
       wx.showToast({
-        title: err,
+        title: '失败',
         icon: 'fail',
         duration: 2000
       })
     })
+    this.getMembers()
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  getMembers: function() {
     var that = this
     let Membership = new wx.BaaS.TableObject(61452)
     var User = new wx.BaaS.User()
@@ -115,60 +101,67 @@ Page({
       that.setData({
         members: res.data.objects
       })
-
     }, err => {
       // err
       console.err(errMsg)
     })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+
+    this.getMembers()
+
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

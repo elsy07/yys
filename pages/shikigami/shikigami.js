@@ -2,32 +2,73 @@ var app = getApp();
 
 Page({
   data: {
-    activeIndex: 0,
-    shishenData: {},
-    shishenType: [],
-    shikigami: [],
+    activeIndex: 'ssr',
+    type: ['ssr', 'sp', '联动'],
+    shikigami: {
+      'ssr':[],
+      'sp':[],
+      '联动':[]
+    },
+    shikigamiByType: [],
     dataIsLoaded: !1
   },
-  
-  onLoad: function (a) {
+
+  changeActive: function(e) {
+    console.log(e)
+    var type = e.target.id
+    this.setData({
+      activeIndex: type,
+      shikigamiByType: this.data.shikigami[type]
+    });
+  },
+  onLoad: function(a) {
     var that = this;
     wx.showLoading({
       title: "加载中..."
     })
     let shikigami = new wx.BaaS.TableObject(61369)
-    let query = new wx.BaaS.Query()
-    shikigami.setQuery(query).limit(50).find().then(res => {
+    let ssr = new wx.BaaS.Query()
+
+    //查找所有ssr
+      ssr.compare('type', '=', 'ssr')
+      shikigami.setQuery(ssr).limit(50).find().then(res => {
+        // success
+        
+        that.data.shikigami.ssr = res.data.objects
+        that.setData({
+          dataIsLoaded: 1,
+          shikigamiByType: that.data.shikigami.ssr
+        })
+        wx.hideLoading()
+      }, err => {
+        // err
+        console.error(err)
+      })
+
+
+    //查找所有sp
+    let sp = new wx.BaaS.Query()
+    sp.compare('type', '=', 'sp')
+    shikigami.setQuery(sp).limit(50).find().then(res => {
       // success
-      wx.hideLoading()
-      console.log(res.data.objects) 
-      that.setData({
-        dataIsLoaded: 1 ,
-        shikigami: res.data.objects
-      })  
+      that.data.shikigami.sp = res.data.objects
     }, err => {
       // err
       console.error(err)
     })
+    
+    //查找所有联动
+    let ld = new wx.BaaS.Query()
+    ld.compare('type', '=', '联动')
+    shikigami.setQuery(ld).limit(50).find().then(res => {
+      // success
+      that.data.shikigami['联动'] = res.data.objects
+    }, err => {
+      // err
+      console.error(err)
+    })
+
+
 
 
 

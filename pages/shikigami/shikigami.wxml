@@ -1,10 +1,13 @@
 <view class="container" wx:if="{{dataIsLoaded}}">
     <view class="content">
+     <view class="nav">
+            <view bindtap="changeActive" class="{{activeIndex==item?'on':''}}" id="{{item}}" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view>
+        </view>
         <view class="shikigami">
             <scroll-view scrollY style="height: 1060rpx">
                 <view class="list">             
-                    <navigator class="item" data-id="{{item.num}}" hoverClass="none" url="/pages/fragments/fragments?id={{item.num}}&name={{item.name}}" wx:for="{{shikigami}}" wx:key="{{item.num}}">
-                        <image src="{{item.avatar.path}}"></image>
+                    <navigator class="item" data-id="{{item.num}}" hoverClass="none" url="/pages/fragments/fragments?id={{item.num}}&name={{item.name}}" wx:for="{{shikigamiByType}}" wx:key="{{item.num}}">
+                        <image src="../../assets/imgs/{{item.num}}.png"></image>
                         <text>{{item.name}}</text>
                     </navigator>
                 </view>

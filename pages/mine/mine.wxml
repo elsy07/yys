@@ -7,31 +7,11 @@
 </view>
 <view class="user-content ">
       <wux-cell-group>
-        <wux-cell title="登记式神碎片" is-link url="/pages/shikigami/shikigami" open-type="navigateTo"></wux-cell>
+        <wux-cell title="登记式神碎片" is-link url="/pages/asset/asset" open-type="navigateTo"></wux-cell>
         <wux-cell title="我的登记资产" is-link bindtap="showDevelop" url="" open-type="navigateTo"></wux-cell>
         <wux-cell title="我的兑换记录" is-link bindtap="showDevelop" url="" open-type="navigateTo"></wux-cell>
         <wux-cell wx:if="{{isAdmin}}" title="成员管理" is-link url="/pages/admin/admin" open-type="navigateTo"></wux-cell>
         <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
 
       </wux-cell-group>
-  <!-- <navigator class="line " hoverClass="none " url="/pages/register/register ">
-    <image class="icon " src=" "></image>
-    <text>登记式神碎片</text>
-    <image class="right-icon " src=" "></image>
-  </navigator>
-  <navigator class="line " hoverClass="none " url="/pages/mine/mine ">
-    <image class="icon " src=" "></image>
-    <text>我的登记资产</text>
-    <image class="right-icon " src=" "></image>
-  </navigator>
-  <view bindtap="showDevelop " class="line ">
-    <image class="icon " src=" "></image>
-    <text>我的兑换记录</text>
-    <image class="right-icon " src=" "></image>
-  </view>
-  <navigator class="line " hoverClass="none " url="/pages/admin/admin " wx:if="{{isAdmin}} ">
-    <image class="icon " src=" "></image>
-    <text>成员管理</text>
-    <image class="right-icon " src=" "></image>
-  </navigator> -->
 </view>

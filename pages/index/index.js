@@ -12,6 +12,15 @@ Page({
     userInfo: {},
     isApprove: !1,
     isAdmin: !1,
+    groups:{
+      'test' : '1546581681122823',
+      'release':'1546614719450807'
+    },
+    categories:{
+      'association': 1546614828235783,
+      'solution': 1546614831126830,
+      'test': 1546582016390327
+    }
   },
 
   showDevelop: function() {
@@ -63,7 +72,7 @@ onClickMe: function(){
       }
     }, err => {
       // err
-      console.err(errMsg)
+      console.log(err)
     })
 
   },

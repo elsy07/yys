@@ -5,9 +5,13 @@
   <view wx:if="{{dataIsLoaded}}">
     <view wx:if="{{isApprove}}">
       <wux-cell-group title="功能列表">
-        <wux-cell title="交换碎片" is-link url="/pages/shikigami/shikigami" open-type="navigateTo"></wux-cell>
+        <wux-cell title="1、活动时间安排" is-link url="/pages/test/test?groupid={{groups.release}}&categoryid={{categories.association}}" open-type="navigateTo"></wux-cell>
+        <wux-cell title="2、寮任务要求" is-link url="/pages/test/test?groupid={{groups.release}}&categoryid={{categories.association}}" open-type="navigateTo"></wux-cell>
+        <wux-cell title="3、碎片互换" is-link url="/pages/shikigami/shikigami" open-type="navigateTo"></wux-cell>
+        <wux-cell title="4、道馆&真蛇攻略" is-link url="/pages/test/test?groupid={{groups.release}}&categoryid={{categories.solution}}" open-type="navigateTo"></wux-cell>
+        <wux-cell title="5、福利一览" is-link url="/pages/test/test?groupid={{groups.release}}&categoryid={{categories.association}}" open-type="navigateTo"></wux-cell>
+        <wux-cell title="6、内容测试" is-link url="/pages/test/test?groupid={{groups.test}}&categoryid={{categories.test}}" open-type="navigateTo"></wux-cell>
         <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
-
       </wux-cell-group>
     </view>
 

@@ -8,7 +8,6 @@
     "pages/mine/mine",
     "pages/admin/admin",
     "pages/asset/asset",
-    "pages/test/test",
     "pages/testpage/testpage"
   ],
   "plugins": {

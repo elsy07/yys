@@ -1,0 +1,64 @@
+page { 
+  background: #000000; 
+} 
+ 
+.content { 
+    padding-top: 60rpx; 
+} 
+ 
+.nav { 
+    display: flex; 
+    padding: 0 50rpx 0; 
+} 
+ 
+.nav view { 
+    width: 120rpx; 
+    height: 60rpx; 
+    background-color: #fff; 
+    color: #313045; 
+    font-size: 32rpx; 
+    text-align: center; 
+    line-height: 60rpx; 
+    margin-right: 20rpx; 
+    border-radius: 10rpx 10rpx 0 0; 
+    border-top: 1rpx solid #313045; 
+    border-left: 1rpx solid #313045; 
+    border-right: 1rpx solid #313045; 
+} 
+ 
+.nav .on { 
+    background-color: rgba(176,196,222,.2); 
+    color: #fff; 
+} 
+ 
+.shikigami { 
+    width: 690rpx; 
+    background-color: rgba(255,255,255,.2); 
+    padding: 30rpx 30rpx 0; 
+    box-sizing: border-box; 
+    border-radius: 10rpx; 
+} 
+ 
+.list { 
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-left: -30rpx; 
+} 
+ 
+.shikigami .item { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-left: 30rpx; 
+    margin-bottom: 30rpx; 
+    color: #eee; 
+    font-size: 26rpx; 
+} 
+ 
+.shikigami image { 
+    width: 135rpx; 
+    height: 135rpx; 
+    margin-bottom: 10rpx; 
+    border: 1rpx solid #313045; 
+    box-sizing: border-box; 
+}

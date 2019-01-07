@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../assets/dist/cell-group/index",
+    "wux-cell": "../../assets/dist/cell/index",
+    "wux-input-number": "../../assets/dist/input-number/index",
+    "wux-switch": "../../assets/dist/switch/index"
+  }
+}

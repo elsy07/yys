@@ -7,6 +7,7 @@
     "pages/apply/apply",
     "pages/mine/mine",
     "pages/admin/admin",
+    "pages/asset/asset",
     "pages/testpage/testpage"
   ],
   "plugins": {

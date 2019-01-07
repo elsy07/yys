@@ -1,0 +1,34 @@
+<modal wx:if="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'> 
+  <view class='modal-content'> 
+    <wux-cell-group> 
+      <wux-cell title="碎片数量" hover-class="none"> 
+        <wux-input-number longpress disabled="{{ false }}" bind:change="onChangeNum" default-value="0" min="{{ 0 }}" slot="footer" /> 
+      </wux-cell> 
+      <wux-cell title="可交换"> 
+        <wux-switch name="可交换" slot="footer" color="balanced" value="{{ canEx }}" bind:change="onChangeEx" /> 
+      </wux-cell> 
+      <wux-cell title="可卖钱"> 
+        <wux-switch name="可卖钱" slot="footer" color="energized" value="{{ canSell }}" bind:change="onChangeSell" /> 
+      </wux-cell> 
+    </wux-cell-group> 
+  </view> 
+</modal> 
+ 
+<view class="container"> 
+  <view class="content"> 
+    <view class="nav"> 
+      <view bindtap="changeActive" class="{{activeIndex==item?'on':''}}" id="{{item}}" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view> 
+    </view> 
+    <view class="shikigami"> 
+      <scroll-view scrollY style="height: 1060rpx"> 
+        <view class="list"> 
+          <view bindtap="regAsset" class="item" id="{{item.num}}" hoverClass="none" wx:for="{{shikigamiByType}}" wx:key="{{item.num}}"> 
+            <image src="../../assets/imgs/{{item.num}}.png"></image> 
+            <text>{{item.name}}</text> 
+            <text wx:if="{{item.fragNum}}">碎片：{{item.fragNum}}</text> 
+          </view> 
+        </view> 
+      </scroll-view> 
+    </view> 
+  </view> 
+</view>

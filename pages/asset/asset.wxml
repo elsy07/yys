@@ -15,7 +15,34 @@
 </modal> 
  
 <view class="container"> 
-  <view class="content"> 
+        <view class="want-exchange">
+            <view class="title">我想换的碎片：</view>
+            <view class="wrap-line">
+                <view class="picker-wrap">
+                    <text>式神：</text>
+                    <picker bindchange="bindWantShishen" range="{{allShishen}}" rangeKey="{{'name'}}" value="{{wantShishenIndex}}">
+                        <view class="picker">
+                            <view class="text">{{allShishen[wantShishenIndex].name}}</view>
+                            <view class="icon"></view>
+                        </view>
+                    </picker>
+                </view>
+                <view class="picker-wrap">
+                    <text>数量：</text>
+                    <picker bindchange="bindWantNum" range="{{num}}" value="{{wantNumIndex}}">
+                        <view class="picker">
+                            <view class="text">{{num[wantNumIndex]}}</view>
+                            <view class="icon"></view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <label bindtap="changeSuport">
+                <checkbox checked="{{}}" class="checkbox"></checkbox>
+                <text>我愿意人民币收换（不做担保，请自行鉴别）</text>
+            </label>
+        </view>
+  <view class="to-exchange"> 
     <view class="nav"> 
       <view bindtap="changeActive" class="{{activeIndex==item?'on':''}}" id="{{item}}" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view> 
     </view> 

@@ -16,7 +16,7 @@ Page({
     let member = Membership.getWithoutData(e.target.dataset.id)
     member.set({
       state: 1,
-      is_apprrove: true
+      is_approve: true
     })
     member.update().then(res => {
       // success

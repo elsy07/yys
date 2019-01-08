@@ -14,7 +14,7 @@ Page({
     shikigamiByType: [],
     shikigamiAll: [],
     myAssets: [],
-    want: '315',
+    want: '',
     wantIndex: 0
   },
 
@@ -27,13 +27,11 @@ Page({
     var that = this
 
     //查所有碎片记录
-
     let Fragment = new wx.BaaS.TableObject('fragments')
     let uid = wx.BaaS.storage.get("uid")
-
-    let query = new wx.BaaS.Query()
-    query.compare('created_by', '=', uid)
-    Fragment.setQuery(query).select(['shikigami', 'num', 'canEx', 'canSell']).find().then(res => {
+    let queryF = new wx.BaaS.Query()
+    queryF.compare('created_by', '=', uid)
+    Fragment.setQuery(queryF).select(['shikigami', 'num', 'canSell']).find().then(res => {
       console.log(res)
       this.data.myAssets = res.data.objects
 
@@ -52,6 +50,7 @@ Page({
           for (var j in that.data.myAssets) {
             if (that.data.shikigamiAll[i].num == that.data.myAssets[j].shikigami) {
               that.data.shikigamiAll[i].fragNum = that.data.myAssets[j].num
+              that.data.shikigamiAll[i].canSell = that.data.myAssets[j].canSell
             }
           }
           if (that.data.shikigamiAll[i].type == 'ssr') {
@@ -77,24 +76,53 @@ Page({
           that.setData({
             shikigamiByType: that.data.shikigami.ssr
           })
-          wx.hideLoading()
         }
         if (that.data.activeIndex == 'sp') {
           that.setData({
             shikigamiByType: that.data.shikigami.sp
           })
-          wx.hideLoading()
         }
         if (that.data.activeIndex == '联动') {
           that.setData({
             shikigamiByType: that.data.shikigami['联动']
           })
+        }
+
+        //查want记录
+        let Membership = new wx.BaaS.TableObject('membership')
+        var User = new wx.BaaS.User()
+        let queryU = new wx.BaaS.Query()
+        queryU.compare('user', '=', User.getWithoutData(uid))
+        Membership.setQuery(queryU).find().then(res => {
+          console.log(res)
+          if (res.data.meta.total_count) {
+            for (var k in that.data.shikigamiAll) {
+              if (that.data.shikigamiAll[k].num == res.data.objects[0].want) {
+                that.setData({
+                  want: res.data.objects[0].want,
+                  wantIndex: k,
+                  canBuy: res.data.objects[0].canBuy
+                })
+              }
+            } 
+          }
+          wx.hideLoading()
+        }), err => {
+          console.log(err)
+          wx.showToast({
+            title: '个人愿望查询失败',
+            icon:'none'
+          })
           wx.hideLoading()
         }
 
       }, err => {
-        // err 
         console.error(err)
+        wx.showToast({
+          title: '所有式神查询失败',
+          icon: 'none'
+        })
+        wx.hideLoading()
       })
 
 
@@ -180,10 +208,10 @@ Page({
 
 
     }), err => {
-      //err 为 HError 对象
       console.log(err)
       wx.showToast({
-        title: 'err',
+        title: '碎片记录查询失败',
+        icon: 'none'
       })
     }
   },
@@ -209,7 +237,7 @@ Page({
     query.compare('user', '=', User.getWithoutData(uid))
     Membership.setQuery(query).find().then(res => {
       console.log(res)
-      if(res.data.meta.total_count){
+      if (res.data.meta.total_count) {
         let recordID = res.data.objects[0].id
         let member = Membership.getWithoutData(recordID)
         member.set({
@@ -250,7 +278,7 @@ Page({
       wantIndex: e.detail.value
     })
   },
-  onChangePY: function (e) {
+  onChangePY: function(e) {
     console.log(e)
     this.setData({
       canBuy: !this.data.canBuy
@@ -278,13 +306,13 @@ Page({
     })
   },
 
-  //是否交换 
-  onChangeEx: function(e) {
-    console.log(e)
-    this.setData({
-      canEx: e.detail.value
-    })
-  },
+  // //是否交换 
+  // onChangeEx: function(e) {
+  //   console.log(e)
+  //   this.setData({
+  //     canEx: e.detail.value
+  //   })
+  // },
 
   //是否买卖 
   onChangeSell: function(e) {
@@ -315,7 +343,7 @@ Page({
         asset.set({
           shikigami: this.data.shikigamiID,
           num: this.data.num,
-          canEx: this.data.canEx,
+          //canEx: this.data.canEx,
           canSell: this.data.canSell
         })
         asset.save().then(res => {
@@ -341,7 +369,7 @@ Page({
         asset.set({
           shikigami: this.data.shikigamiID,
           num: this.data.num,
-          canEx: this.data.canEx,
+          //canEx: this.data.canEx,
           canSell: this.data.canSell
         })
         asset.update().then(res => {

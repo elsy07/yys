@@ -8,7 +8,6 @@
 <view class="user-content ">
       <wux-cell-group>
         <wux-cell title="登记式神碎片" is-link url="/pages/asset/asset" open-type="navigateTo"></wux-cell>
-        <wux-cell title="我的登记资产" is-link bindtap="showDevelop" url="" open-type="navigateTo"></wux-cell>
         <wux-cell title="我的兑换记录" is-link bindtap="showDevelop" url="" open-type="navigateTo"></wux-cell>
         <wux-cell wx:if="{{isAdmin}}" title="成员管理" is-link url="/pages/admin/admin" open-type="navigateTo"></wux-cell>
         <wux-cell title="改昵称" is-link url="/pages/changeName/changeName" open-type="navigateTo"></wux-cell>

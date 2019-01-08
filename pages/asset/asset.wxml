@@ -1,61 +1,54 @@
-<modal wx:if="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'> 
-  <view class='modal-content'> 
-    <wux-cell-group> 
-      <wux-cell title="碎片数量" hover-class="none"> 
-        <wux-input-number longpress disabled="{{ false }}" bind:change="onChangeNum" default-value="0" min="{{ 0 }}" slot="footer" /> 
-      </wux-cell> 
-      <wux-cell title="可交换"> 
-        <wux-switch name="可交换" slot="footer" color="balanced" value="{{ canEx }}" bind:change="onChangeEx" /> 
-      </wux-cell> 
-      <wux-cell title="可卖钱"> 
-        <wux-switch name="可卖钱" slot="footer" color="energized" value="{{ canSell }}" bind:change="onChangeSell" /> 
-      </wux-cell> 
-    </wux-cell-group> 
-  </view> 
-</modal> 
- 
-<view class="container"> 
-        <view class="want-exchange">
-            <view class="title">我想换的碎片：</view>
-            <view class="wrap-line">
-                <view class="picker-wrap">
-                    <text>式神：</text>
-                    <picker bindchange="bindWantShishen" range="{{allShishen}}" rangeKey="{{'name'}}" value="{{wantShishenIndex}}">
-                        <view class="picker">
-                            <view class="text">{{allShishen[wantShishenIndex].name}}</view>
-                            <view class="icon"></view>
-                        </view>
-                    </picker>
-                </view>
-                <view class="picker-wrap">
-                    <text>数量：</text>
-                    <picker bindchange="bindWantNum" range="{{num}}" value="{{wantNumIndex}}">
-                        <view class="picker">
-                            <view class="text">{{num[wantNumIndex]}}</view>
-                            <view class="icon"></view>
-                        </view>
-                    </picker>
-                </view>
-            </view>
-            <label bindtap="changeSuport">
-                <checkbox checked="{{}}" class="checkbox"></checkbox>
-                <text>我愿意人民币收换（不做担保，请自行鉴别）</text>
-            </label>
+<modal wx:if="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+  <view class='modal-content'>
+    <wux-cell-group>
+      <wux-cell title="碎片数量" hover-class="none">
+        <wux-input-number longpress disabled="{{ false }}" bind:change="onChangeNum" default-value="0" min="{{ 0 }}" slot="footer" />
+      </wux-cell>
+      <!-- <wux-cell title="可交换">
+        <wux-switch name="可交换" slot="footer" color="balanced" value="{{ canEx }}" bind:change="onChangeEx" />
+      </wux-cell> -->
+      <wux-cell title="可PY（本平台不负责)">
+        <wux-switch name="可卖钱" slot="footer" color="energized" value="{{ canSell }}" bind:change="onChangeSell" />
+      </wux-cell>
+    </wux-cell-group>
+  </view>
+</modal>
+
+<view class="container">
+  <view class="want-exchange">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="wrap-line">
+      <view class="picker-wrap">
+        <text>我想换的式神：</text>
+        <picker bindchange="onChangeWant" range="{{shikigamiAll}}" rangeKey="{{'name'}}" value="{{wantIndex}}">
+          <view class="picker">
+            <view class="text">{{shikigamiAll[wantIndex].name}}</view>
+            <view class="icon"></view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <label bindtap="onChangePY">
+      <checkbox checked="{{canBuy}}" class="checkbox"></checkbox>
+      <text>我愿意人民币收（不做担保，请自行鉴别）</text>
+    </label>
+    <button class="wux-button" form-type="submit">确认</button>
+    </form>
+  </view>
+  <view class="to-exchange">
+    <view class="nav">
+      <view bindtap="changeActive" class="{{activeIndex==item?'on':''}}" id="{{item}}" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+    <view class="shikigami">
+      <scroll-view scrollY style="height: 1060rpx">
+        <view class="list">
+          <view bindtap="regAsset" class="item" id="{{item.num}}" hoverClass="none" wx:for="{{shikigamiByType}}" wx:key="{{item.num}}">
+            <image src="../../assets/imgs/{{item.num}}.png"></image>
+            <text>{{item.name}}</text>
+            <text wx:if="{{item.fragNum}}">碎片：{{item.fragNum}}</text>
+          </view>
         </view>
-  <view class="to-exchange"> 
-    <view class="nav"> 
-      <view bindtap="changeActive" class="{{activeIndex==item?'on':''}}" id="{{item}}" wx:for="{{type}}" wx:key="{{index}}">{{item}}</view> 
-    </view> 
-    <view class="shikigami"> 
-      <scroll-view scrollY style="height: 1060rpx"> 
-        <view class="list"> 
-          <view bindtap="regAsset" class="item" id="{{item.num}}" hoverClass="none" wx:for="{{shikigamiByType}}" wx:key="{{item.num}}"> 
-            <image src="../../assets/imgs/{{item.num}}.png"></image> 
-            <text>{{item.name}}</text> 
-            <text wx:if="{{item.fragNum}}">碎片：{{item.fragNum}}</text> 
-          </view> 
-        </view> 
-      </scroll-view> 
-    </view> 
-  </view> 
+      </scroll-view>
+    </view>
+  </view>
 </view>

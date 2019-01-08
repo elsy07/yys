@@ -8,7 +8,8 @@
     "pages/mine/mine",
     "pages/admin/admin",
     "pages/asset/asset",
-    "pages/testpage/testpage"
+    "pages/testpage/testpage",
+    "pages/changeName/changeName"
   ],
   "plugins": {
     "sdkPlugin": {

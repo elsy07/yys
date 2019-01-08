@@ -37,7 +37,7 @@ Page({
 
 onClickMe: function(){
   wx.navigateTo({
-    url: '/pages/mine/mine?isAdmin=' + this.data.isAdmin,
+    url: '/pages/mine/mine?isAdmin=' + this.data.isAdmin + '&yys_name=' + this.data.Membership.yys_name,
   })
 },
 

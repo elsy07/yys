@@ -1,0 +1,13 @@
+<!--pages/changeName/changeName.wxml-->
+<view class="line">
+<form bindsubmit="changeNameSubmit" bindreset="formReset">
+  <wux-cell hover-class="none">
+    <input name="yys_newName" placeholder="请输入新游戏昵称">新游戏昵称</input>
+  </wux-cell>
+  <!-- <wux-cell hover-class="none">
+    <input name="yys_id" placeholder="请输入游戏id（点击游戏头像-编号）" type="number">游戏id</input>
+  </wux-cell> -->
+
+  <button form-type="submit">提交</button>
+  </form>
+</view>

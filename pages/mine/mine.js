@@ -6,7 +6,8 @@ Page({
    */
   data: {
     userInfo: {},
-    isAdmin: false
+    isAdmin: false,
+    yys_name:''
   },
   
   showDevelop: function () {
@@ -21,7 +22,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      isAdmin: options.isAdmin
+      isAdmin: options.isAdmin,
+      yys_name : options.yys_name
     })
     if (wx.BaaS.storage.get('userinfo')) {
       this.setData({

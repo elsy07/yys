@@ -31,7 +31,7 @@ Page({
 
   showDevelop: function() {
     wx.showToast({
-      title: "功能正在开发中，敬请期待！",
+      title: "功能正在开发中！",
       icon: "none",
       duration: 1500
     });

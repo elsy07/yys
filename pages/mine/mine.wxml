@@ -8,7 +8,7 @@
   <view class="filter-wrap " style="background-image: url({{userInfo.avatarUrl}})"></view>
   <view bind:tap="changeName" class="user">
     <image class="avatar " mode="aspectFill " src="{{userInfo.avatarUrl}}"></image>
-    <view class="name ">{{membership.yys_name}} ({{userInfo.nickName}})</view>
+    <view class="name ">{{membership.yys_name}} ({{userInfo.nickName}}) <wux-icon size="20" type="ios-create" /></view>
   </view>
 </view>
 <view class="user-content ">

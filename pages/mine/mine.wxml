@@ -1,16 +1,22 @@
+<modal wx:if="{{showModal}}" height='60%' bindcancel="modalCancel" bindconfirm='modalConfirm'>
+  <view class='modal-content'>
+        <wux-input label="就这么富有：" bind:change="onChangeName" placeholder="输入新昵称" />
+  </view>
+</modal>
+
 <view class="user-info ">
   <view class="filter-wrap " style="background-image: url({{userInfo.avatarUrl}})"></view>
-  <view class="user ">
+  <view bind:tap="changeName" class="user">
     <image class="avatar " mode="aspectFill " src="{{userInfo.avatarUrl}}"></image>
-    <view class="name ">{{yys_name}} ({{userInfo.nickName}})</view>
+    <view class="name ">{{membership.yys_name}} ({{userInfo.nickName}})</view>
   </view>
 </view>
 <view class="user-content ">
       <wux-cell-group>
         <wux-cell title="登记式神碎片" is-link url="/pages/asset/asset" open-type="navigateTo"></wux-cell>
         <wux-cell title="我的兑换记录" is-link bindtap="showDevelop" url="" open-type="navigateTo"></wux-cell>
-        <wux-cell wx:if="{{isAdmin}}" title="成员管理" is-link url="/pages/admin/admin" open-type="navigateTo"></wux-cell>
-        <wux-cell title="改昵称" is-link url="/pages/changeName/changeName" open-type="navigateTo"></wux-cell>
+        <wux-cell wx:if="{{membership.is_admin}}" title="成员管理" is-link url="/pages/admin/admin" open-type="navigateTo"></wux-cell>
+        <!-- <wux-cell title="改昵称" is-link url="/pages/changeName/changeName" open-type="navigateTo"></wux-cell> -->
         <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
 
       </wux-cell-group>

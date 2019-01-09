@@ -37,7 +37,7 @@ Page({
 
   onClickMe: function() {
     wx.navigateTo({
-      url: '/pages/mine/mine?isAdmin=' + this.data.isAdmin + '&yys_name=' + this.data.Membership.yys_name,
+      url: '/pages/mine/mine'
     })
   },
 
@@ -58,7 +58,6 @@ Page({
     let query = new wx.BaaS.Query()
     query.compare('user', '=', User.getWithoutData(uid))
     Membership.setQuery(query).find().then(res => {
-      console.log("isApply", res.data)
       //注册过
       if (res.data.meta.total_count) {
         that.setData({
@@ -67,7 +66,7 @@ Page({
         //注册未通过
         if (res.data.objects[0].is_approve) {
           //注册已通过
-          that.data.Membership = res.data.objects[0]
+          wx.BaaS.storage.set('Membership',res.data.objects[0])
           that.setData({
             isApprove: true,
             isAdmin: res.data.objects[0].is_admin,

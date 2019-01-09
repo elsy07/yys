@@ -4,9 +4,6 @@
       <wux-cell title="碎片数量" hover-class="none">
         <wux-input-number longpress disabled="{{ false }}" bind:change="onChangeNum" default-value="0" min="{{ 0 }}" slot="footer" />
       </wux-cell>
-      <!-- <wux-cell title="可交换">
-        <wux-switch name="可交换" slot="footer" color="balanced" value="{{ canEx }}" bind:change="onChangeEx" />
-      </wux-cell> -->
       <wux-cell title="可PY（本平台不负责)">
         <wux-switch name="可卖钱" slot="footer" color="energized" value="{{ canSell }}" bind:change="onChangeSell" />
       </wux-cell>

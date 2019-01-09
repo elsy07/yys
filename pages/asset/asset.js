@@ -5,7 +5,7 @@ Page({
     showModal: false,
     shikigamiID: '',
     num: 0,
-    canEx: true,
+    //canEx: true,
     canSell: false,
     canBuy: false,
     activeIndex: 'ssr',
@@ -98,8 +98,9 @@ Page({
           if (res.data.meta.total_count) {
             for (var k in that.data.shikigamiAll) {
               if (that.data.shikigamiAll[k].num == res.data.objects[0].want) {
+                that.data.want = res.data.objects[0].want
                 that.setData({
-                  want: res.data.objects[0].want,
+                  //want: res.data.objects[0].want,
                   wantIndex: k,
                   canBuy: res.data.objects[0].canBuy
                 })
@@ -289,11 +290,12 @@ Page({
   regAsset: function(e) {
     console.log(e)
     var shikigamiID = e.currentTarget.id
+
     this.setData({
       showModal: true,
       num: 0,
       shikigamiID: shikigamiID,
-      canEx: true,
+      //canEx: true,
       canSell: false
     })
   },

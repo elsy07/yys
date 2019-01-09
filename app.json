@@ -8,7 +8,7 @@
     "pages/mine/mine",
     "pages/admin/admin",
     "pages/asset/asset",
-    "pages/testpage/testpage",
+    "pages/content/content",
     "pages/changeName/changeName"
   ],
   "plugins": {

@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    dataIsLoaded: 1,
+    dataIsLoaded: !1,
     show30Tips: 1,
     hasShow30Tips: !1,
     time: 5,
@@ -12,11 +12,11 @@ Page({
     userInfo: {},
     isApprove: !1,
     isAdmin: !1,
-    groups:{
-      'test' : '1546581681122823',
-      'release':'1546614719450807'
+    groups: {
+      'test': '1546581681122823',
+      'release': '1546614719450807'
     },
-    contents:{
+    contents: {
       'activity': 1546698081029793,
       'mission': 1546698728539707,
       'benefits': 1546698915352215,
@@ -35,11 +35,11 @@ Page({
     });
   },
 
-onClickMe: function(){
-  wx.navigateTo({
-    url: '/pages/mine/mine?isAdmin=' + this.data.isAdmin + '&yys_name=' + this.data.Membership.yys_name,
-  })
-},
+  onClickMe: function() {
+    wx.navigateTo({
+      url: '/pages/mine/mine?isAdmin=' + this.data.isAdmin + '&yys_name=' + this.data.Membership.yys_name,
+    })
+  },
 
   onLoad: function() {
     var that = this
@@ -48,7 +48,9 @@ onClickMe: function(){
         userInfo: wx.BaaS.storage.get('userinfo')
       });
     }
-
+    wx.showLoading({
+      title: '马上就好',
+    })
     //查询是否注册过寮
     let Membership = new wx.BaaS.TableObject(61452)
     var User = new wx.BaaS.User()
@@ -56,27 +58,33 @@ onClickMe: function(){
     let query = new wx.BaaS.Query()
     query.compare('user', '=', User.getWithoutData(uid))
     Membership.setQuery(query).find().then(res => {
-      // success
       console.log("isApply", res.data)
-
       //注册过
-      if (res.data.meta.total_count) { 
+      if (res.data.meta.total_count) {
         that.setData({
           isApply: true
         })
         //注册未通过
         if (res.data.objects[0].is_approve) {
           //注册已通过
+          that.data.Membership = res.data.objects[0]
           that.setData({
             isApprove: true,
             isAdmin: res.data.objects[0].is_admin,
-            Membership: res.data.objects[0]
+            //Membership: res.data.objects[0]
           })
-        } 
+        }
       }
+      that.setData({
+        dataIsLoaded: 1
+      })
+      wx.hideLoading()
     }, err => {
-      // err
       console.log(err)
+      wx.showToast({
+        title: '注册信息查询失败',
+
+      })
     })
 
   },

@@ -15,7 +15,7 @@ Page({
     shikigamiAll: [],
     myAssets: [],
     want: '',
-    wantName:'',
+    wantName: '',
     wantIndex: 0
   },
 
@@ -252,7 +252,7 @@ Page({
     let Membership = new wx.BaaS.TableObject('membership')
     let memberID = wx.BaaS.storage.get("Membership").id
     let Member = Membership.getWithoutData(memberID)
-    
+
     let uid = wx.BaaS.storage.get("uid")
     let User = new wx.BaaS.User()
     let user = User.getWithoutData(uid)
@@ -263,13 +263,13 @@ Page({
 
     //查询是否有记录
     Fragment.setQuery(query).find().then(res => {
-
+      
       //如果没有登记过，新建记录
-      if (res.data.meta.total_count == 0) {
+      if (res.data.meta.total_count == 0 && that.data.num != 0 ) {
         let asset = Fragment.create()
         asset.set({
           user: user,
-          member : Member,
+          member: Member,
           shikigami: this.data.shikigamiID,
           num: this.data.num,
           //canEx: this.data.canEx,
@@ -285,37 +285,58 @@ Page({
           })
 
         }, err => {
-          //err 为 HError 对象
           console.log(err)
           wx.showToast({
             title: '新增碎片失败',
           })
         })
-      } else {
-        //如果已有记录就更新
+      } else if (res.data.meta.total_count != 0 && that.data.num != 0){
+          //如果已有记录就更新
+          var recordID = res.data.objects[0].id
+          let asset = Fragment.getWithoutData(recordID)
+          asset.set({
+            shikigami: that.data.shikigamiID,
+            num: that.data.num,
+            //canEx: this.data.canEx,
+            canSell: that.data.canSell
+          })
+          asset.update().then(res => {
+            this.setData({
+              showModal: false
+            })
+            wx.showToast({
+              title: '更新碎片成功',
+            })
+          }, err => {
+            // err
+            console.log(err)
+            wx.showToast({
+              title: 'err',
+            })
+          })
+      } else if (res.data.meta.total_count != 0 && that.data.num == 0) {
+        //如果已有记录就删除
         var recordID = res.data.objects[0].id
-        let asset = Fragment.getWithoutData(recordID)
-        asset.set({
-          shikigami: this.data.shikigamiID,
-          num: this.data.num,
-          //canEx: this.data.canEx,
-          canSell: this.data.canSell
-        })
-        asset.update().then(res => {
+        Fragment.delete(recordID).then(res =>{
           this.setData({
             showModal: false
           })
           wx.showToast({
-            title: '更新碎片成功',
+            title: '已删除碎片记录',
+            icon: 'success',
+            duration: 2000
           })
         }, err => {
-          // err
           console.log(err)
           wx.showToast({
-            title: 'err',
+            title: '碎片记录删除失败',
+            icon: 'none',
+            duration: 2000
           })
         })
       }
+
+      
       this.getData()
     }, err => {
       // err

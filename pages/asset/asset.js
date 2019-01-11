@@ -15,6 +15,7 @@ Page({
     shikigamiAll: [],
     myAssets: [],
     want: '',
+    wantName:'',
     wantIndex: 0
   },
 
@@ -99,20 +100,21 @@ Page({
             for (var k in that.data.shikigamiAll) {
               if (that.data.shikigamiAll[k].num == res.data.objects[0].want) {
                 that.data.want = res.data.objects[0].want
+                that.data.wantName = res.data.objects[0].wantName
                 that.setData({
                   //want: res.data.objects[0].want,
                   wantIndex: k,
                   canBuy: res.data.objects[0].canBuy
                 })
               }
-            } 
+            }
           }
           wx.hideLoading()
         }), err => {
           console.log(err)
           wx.showToast({
             title: '个人愿望查询失败',
-            icon:'none'
+            icon: 'none'
           })
           wx.hideLoading()
         }
@@ -160,20 +162,19 @@ Page({
         let member = Membership.getWithoutData(recordID)
         member.set({
           canBuy: that.data.canBuy,
-          want: that.data.want
+          want: that.data.want,
+          wantName: that.data.wantName
         })
         member.update().then(res => {
-          // success
           wx.showToast({
-            title: '已保存',
+            title: '愿望更新成功',
             icon: 'success',
             duration: 2000
           })
         }, err => {
-          // err
           console.log(err)
           wx.showToast({
-            title: '失败',
+            title: '愿望更新失败',
             icon: 'none',
             duration: 2000
           })
@@ -193,6 +194,7 @@ Page({
     console.log(e)
     this.setData({
       want: this.data.shikigamiAll[e.detail.value].num,
+      wantName: this.data.shikigamiAll[e.detail.value].name,
       wantIndex: e.detail.value
     })
   },
@@ -247,7 +249,13 @@ Page({
     var that = this
     //登记
     let Fragment = new wx.BaaS.TableObject('fragments')
+    let Membership = new wx.BaaS.TableObject('membership')
+    let memberID = wx.BaaS.storage.get("Membership").id
+    let Member = Membership.getWithoutData(memberID)
+    
     let uid = wx.BaaS.storage.get("uid")
+    let User = new wx.BaaS.User()
+    let user = User.getWithoutData(uid)
 
     let query = new wx.BaaS.Query()
     query.compare('created_by', '=', uid)
@@ -260,6 +268,8 @@ Page({
       if (res.data.meta.total_count == 0) {
         let asset = Fragment.create()
         asset.set({
+          user: user,
+          member : Member,
           shikigami: this.data.shikigamiID,
           num: this.data.num,
           //canEx: this.data.canEx,
@@ -278,7 +288,7 @@ Page({
           //err 为 HError 对象
           console.log(err)
           wx.showToast({
-            title: 'err',
+            title: '新增碎片失败',
           })
         })
       } else {
@@ -292,7 +302,6 @@ Page({
           canSell: this.data.canSell
         })
         asset.update().then(res => {
-          // success
           this.setData({
             showModal: false
           })

@@ -9,7 +9,8 @@
     "pages/admin/admin",
     "pages/asset/asset",
     "pages/content/content",
-    "pages/changeName/changeName"
+    "pages/changeName/changeName",
+    "pages/trade/trade"
   ],
   "plugins": {
     "sdkPlugin": {

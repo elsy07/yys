@@ -3,3 +3,7 @@ image{
   width: 100%;
   display: block;
 }
+
+.wxparser--wxParser-p{
+  margin: 0 !important;
+}

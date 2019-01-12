@@ -1,5 +1,4 @@
 {
-  "navigationBarBackgroundColor": "#000000",
   "disableScroll": true,
   "usingComponents": {
     "wux-cell-group": "../../assets/dist/cell-group/index",

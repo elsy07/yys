@@ -39,12 +39,48 @@ Page({
 
   },
 
+  sendMsg: function() {
+
+  },
+
+//可交易的才能触发
+  onClickPY: function(e) {
+    //更新碎片状态为正在交易
+    let Fragment = new wx.BaaS.TableObject('fragments')
+    let fragID = e.target.id
+    let fragment = Fragment.getWithoutData(fragID)
+    fragment.set({
+      state: '1'
+    })
+    fragment.update()
+
+    //记录买家和交易信息
+    let Membership = new wx.BaaS.TableObject('membership')
+    let memberID = wx.BaaS.storage.get("Membership").id
+    let member = Membership.getWithoutData(memberID)
+
+    let Trade = new wx.BaaS.TableObject('trade')
+    let trade = Trade.create()
+    trade.set({
+      buyer: member,
+      fragment: fragment
+    })
+    trade.save()
+
+    //发送信息
+
+    //弹窗显示已经发送信息
+
+    //刷新页面
+    this.getData(this.data.shikigamiID)
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var shikigamiID = options.id
-    console.log(shikigamiID)
+    this.data.shikigamiID = shikigamiID
     wx.showLoading({
       title: '正在查找',
     })

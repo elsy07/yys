@@ -59,12 +59,12 @@
     font-size: 24rpx;
     border-radius: 10rpx;
     color: #fff;
-    background-color: #9b9494;
+    background-color: #34A853;
 }
 
 .btn.disabled {
-    color: #9b9494;
-    background-color: #fff;
+    color: #fff;
+    background-color: #9b9494;
 }
 
 .no-user {

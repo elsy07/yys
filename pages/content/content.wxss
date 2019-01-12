@@ -1,1 +1,5 @@
 /* pages/content/content.wxss */
+image{
+  width: 100%;
+  display: block;
+}

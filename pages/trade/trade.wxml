@@ -1,25 +1,31 @@
 <view class="container" wx:if="{{dataIsLoaded}}">
-    <scroll-view scrollY class="content" style="height: 100%" wx:if="{{data.length>0}}">
-        <view class="line" wx:for="{{data}}" wx:key="{{index}}">
-            <view class="avatar">
-                <image src="{{item.user.avatar}}"></image>
-            </view>
-            <view class="text">
-                <view class="name">
-                    <text>{{item.member.yys_name}}</text>
-                    <text>#{{item.member.yys_id}}</text>
-                </view>
-                <view class="info">
-                    <text>{{item.num}}片</text>
-                    <text>想换{{item.member.wantName}}</text>
-                    <text wx:if="{{item.member.canBuy}}">可人民币买卖</text>
-                </view>
-            </view>
-            <view bindtap="onClickPY" class="btn" wx:if="{{item.state == 0}}" id="{{item.id}}">请求交易</view>
-            <view class="btn disabled" wx:if="{{item.state == 1}}">正在交易</view>
+  <scroll-view scrollY class="content" style="height: 100%" wx:if="{{trades.length>0}}">
+    <view class="line" wx:for="{{trades}}" wx:key="{{index}}">
+      <view class="avatar">
+        <image src="/assets/imgs/{{item.fragment.shikigami}}.png"></image>
+      </view>
+      <view class="text">
+        <view class="name">
+          <text>游戏昵称: {{item.buyer.yys_name}}</text>
         </view>
-    </scroll-view>
-    <view class="content no-user" wx:else>
-    哇，这个碎片太稀缺了，暂时没人登记！
+        <view class="name">
+        <text>微信昵称: {{item.buyerWX}}</text>
+        </view>
+        <view class="info">
+          <text>交换你的{{item.num}}片{{item.shikigamiName}}</text>
+          <text wx:if="{{item.buyer.canBuy}}">可人民币买卖</text>
+        </view>
+      </view>
+      <view>
+        <view bindtap="onClickConfirm" class="btn confirm" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">交易成功</view>
+        <view bindtap="onClickCancel" class="btn cancel" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">取消交易</view>
+        <view class="btn success" wx:if="{{item.state == 1}}">交易成功</view>
+        <view class="btn disabled" wx:if="{{item.state == 2}}">交易失败</view>
+      </view>
+    </view>
+
+  </scroll-view>
+  <view class="content no-user" wx:else>
+    暂时木有交易
   </view>
 </view>

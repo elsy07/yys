@@ -68,7 +68,10 @@ Page({
     let trade = Trade.create()
     trade.set({
       buyer: member,
-      fragment: fragment
+      fragment: fragment,
+      num: e.target.dataset.fragnum,
+      shikigamiName: e.target.dataset.fragname,
+      buyerWX: wx.BaaS.storage.get("userinfo").nickName
     })
     trade.save()
 

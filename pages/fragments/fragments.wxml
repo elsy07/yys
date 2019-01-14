@@ -15,7 +15,7 @@
             <text wx:if="{{item.member.canBuy}}">可人民币买卖</text>
           </view>
         </view>
-        <view bindtap="onClickPY" class="btn" wx:if="{{item.state == 0}}" id="{{item.id}}">请求交易</view>
+        <view bindtap="onClickPY" class="btn" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragnum="{{item.num}}" data-fragname="{{item.shikigamiName}}">请求交易</view>
         <view class="btn disabled" wx:if="{{item.state == 1}}">正在交易</view>
       </view>
 

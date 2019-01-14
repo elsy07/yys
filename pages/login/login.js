@@ -27,7 +27,7 @@ Page({
       console.log("有用户信息")
 
       wx.navigateTo({
-        url: '/pages/trade/trade',
+        url: '/pages/index/index',
       })
     }
 

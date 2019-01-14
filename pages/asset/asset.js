@@ -11,6 +11,7 @@ Page({
     activeIndex: 'ssr',
     type: ['ssr', 'sp', '联动'],
     shikigami: {},
+    shikigamiName: '',
     shikigamiByType: [],
     shikigamiAll: [],
     myAssets: [],
@@ -214,7 +215,7 @@ Page({
       showModal: true,
       num: 0,
       shikigamiID: shikigamiID,
-      //canEx: true,
+      shikigamiName: e.currentTarget.dataset.name,
       canSell: false
     })
   },
@@ -263,16 +264,15 @@ Page({
 
     //查询是否有记录
     Fragment.setQuery(query).find().then(res => {
-      
       //如果没有登记过，新建记录
-      if (res.data.meta.total_count == 0 && that.data.num != 0 ) {
+      if (res.data.meta.total_count == 0) {
         let asset = Fragment.create()
         asset.set({
           user: user,
           member: Member,
           shikigami: this.data.shikigamiID,
           num: this.data.num,
-          //canEx: this.data.canEx,
+          shikigamiName: this.data.shikigamiName,
           canSell: this.data.canSell
         })
         asset.save().then(res => {
@@ -290,53 +290,52 @@ Page({
             title: '新增碎片失败',
           })
         })
-      } else if (res.data.meta.total_count != 0 && that.data.num != 0){
-          //如果已有记录就更新
-          var recordID = res.data.objects[0].id
-          let asset = Fragment.getWithoutData(recordID)
-          asset.set({
-            shikigami: that.data.shikigamiID,
-            num: that.data.num,
-            //canEx: this.data.canEx,
-            canSell: that.data.canSell
-          })
-          asset.update().then(res => {
-            this.setData({
-              showModal: false
-            })
-            wx.showToast({
-              title: '更新碎片成功',
-            })
-          }, err => {
-            // err
-            console.log(err)
-            wx.showToast({
-              title: 'err',
-            })
-          })
-      } else if (res.data.meta.total_count != 0 && that.data.num == 0) {
-        //如果已有记录就删除
+      } else if (res.data.meta.total_count != 0) {
+        //如果已有记录就更新
         var recordID = res.data.objects[0].id
-        Fragment.delete(recordID).then(res =>{
+        let asset = Fragment.getWithoutData(recordID)
+        asset.set({
+          num: that.data.num,
+          canSell: that.data.canSell
+        })
+        asset.update().then(res => {
           this.setData({
             showModal: false
           })
           wx.showToast({
-            title: '已删除碎片记录',
-            icon: 'success',
-            duration: 2000
+            title: '更新碎片成功',
           })
         }, err => {
+          // err
           console.log(err)
           wx.showToast({
-            title: '碎片记录删除失败',
-            icon: 'none',
-            duration: 2000
+            title: 'err',
           })
         })
-      }
+      } 
+      // else if (res.data.meta.total_count != 0 && that.data.num == 0) {
+      //   //如果已有记录就删除
+      //   var recordID = res.data.objects[0].id
+      //   Fragment.delete(recordID).then(res => {
+      //     this.setData({
+      //       showModal: false
+      //     })
+      //     wx.showToast({
+      //       title: '已删除碎片记录',
+      //       icon: 'success',
+      //       duration: 2000
+      //     })
+      //   }, err => {
+      //     console.log(err)
+      //     wx.showToast({
+      //       title: '碎片记录删除失败',
+      //       icon: 'none',
+      //       duration: 2000
+      //     })
+      //   })
+      // }
 
-      
+
       this.getData()
     }, err => {
       // err

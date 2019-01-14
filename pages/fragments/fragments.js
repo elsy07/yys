@@ -22,10 +22,15 @@ Page({
 
     //查询碎片记录
     Fragment.setQuery(query).expand(['member', 'user']).find().then(res => {
-
+      let tmp = []
+      for (var i in res.data.objects){
+        if (res.data.objects[i].num > 0){
+          tmp.push(res.data.objects[i])
+        }
+      }
       that.setData({
         dataIsLoaded: 1,
-        data: res.data.objects
+        data: tmp
       })
 
       wx.hideLoading()

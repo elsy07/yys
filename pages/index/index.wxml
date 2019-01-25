@@ -1,27 +1,47 @@
 <view wx:if="{{dataIsLoaded}}">
-  <view class="page-body ">
-    <view wx:if="{{isApprove}} ">
-      <view bind:tap="onClickMe" class="me ">
-        <image src="{{userInfo.avatarUrl}} " />
-      </view>
-      <wux-cell-group title="功能列表 ">
-        <wux-cell title="1、活动时间安排" is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.activity}}" open-type="navigateTo"></wux-cell>
-        <wux-cell title="2、寮任务要求 " is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.mission}}" open-type="navigateTo"></wux-cell>
-        <wux-cell title="3、碎片互换" is-link url="/pages/shikigami/shikigami" open-type="navigateTo"></wux-cell>
-        <wux-cell title="4、福利一览" is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.benefits}}" open-type="navigateTo"></wux-cell>
-        <wux-cell title="5、道馆攻略" is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionD}}" open-type="navigateTo"></wux-cell>
-        <wux-cell title="6、真蛇攻略" is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionS}}" open-type="navigateTo"></wux-cell>
-        <wux-cell title="7、屯屯鼠攻略" is-link url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionY}}" open-type="navigateTo"></wux-cell>
-        <!-- <wux-cell title="内容测试 " is-link url="/pages/testpage/testpage?groupid={{groups.test}}&id={{contents.test}} " open-type="navigateTo"></wux-cell> -->
-        <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
-      </wux-cell-group>
+  <view class="page-body">
+    <view wx:if="{{isApprove}}">
+    <!-- <button id="me" hover-class="none" bind:tap="onClickMe">个人中心</button> -->
+      <view class="blank"></view>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.activity}}">
+            <text>1、活动时间安排</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.mission}}">
+            <text>2、寮任务要求</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/shikigami/shikigami">
+            <text>3、碎片互换</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.benefits}}">
+            <text>4、福利一览</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionD}}">
+            <text>5、道馆攻略</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionS}}">
+            <text>6、真蛇攻略</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionY}}">
+            <text>7、屯屯鼠攻略</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
+        <navigator class="me" hoverClass="none" url="/pages/mine/mine">
+            <text>@ 个人中心--登记碎片</text>
+            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+        </navigator>
     </view>
     <view wx:else>
-      <view class="no-permission-wrap " wx:if="{{!isApply}} ">
+      <view class="no-permission-wrap" wx:if="{{!isApply}}">
         <text>嘤嘤嘤</text>
-        <navigator class="btn" hoverClass="none " url="/pages/apply/apply">申请加入</navigator>
+        <navigator class="btn" hoverClass="none" url="/pages/apply/apply">申请加入</navigator>
       </view>
-      <view class="no-permission-wrap " wx:if="{{isApply}} ">
+      <view class="no-permission-wrap" wx:if="{{isApply}}">
         <text>你已申请，请等待管理员的审批</text>
       </view>
     </view>

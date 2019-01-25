@@ -1,5 +1,7 @@
 page {
-  background: #000000;
+ /* background: #20132e;*/
+  background: url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gkklXu6nRqdqBEj.jpg") no-repeat;
+  background-size: cover;
 }
 
 .content {
@@ -33,7 +35,7 @@ page {
 
 .shikigami {
     width: 690rpx;
-    background-color: rgba(255,255,255,.2);
+    background-color: rgba(176,196,222,.2);
     padding: 30rpx 30rpx 0;
     box-sizing: border-box;
     border-radius: 10rpx;
@@ -59,6 +61,10 @@ page {
     width: 135rpx;
     height: 135rpx;
     margin-bottom: 10rpx;
-    border: 1rpx solid #313045;
+    outline: none;
+    border: hidden;
+    border-radius: 50%;
+    box-shadow: 3rpx 5rpx 1rpx #fdb022; 
     box-sizing: border-box;
+    
 }

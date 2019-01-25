@@ -1,22 +1,24 @@
 /**index.wxss**/
 page {
   background:url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gg2vY7QiP6eWv4R.jpg");
-  background-size: contain;
+  background-size: cover;
 }
+
 
 .login{
     display: flex;
     justify-content: center;
 }
 
-#userinfo{
+#userinfo{ 
   position: absolute;
   width: 62%;
   bottom: 20%;
   border:none;
   background-image: url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gg2vYwtgvilVTMm.jpg");
-  background-size: cover;
+  background-size:cover;
   background-repeat:no-repeat;
-  z-index: 20;
+  color: #2b2c4b;
+  z-index: 20; 
 }
 

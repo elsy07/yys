@@ -1,97 +1,164 @@
-.me {
-    padding: 30rpx;
-    position:fixed; 
-    bottom:0;
-    right: 30rpx;
+page {
+  background: url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gg2vY1t6zqlERyY.jpg") no-repeat;
+  background-size: cover;
 }
 
-.me image {
-    width: 150rpx;
-    height: 150rpx;
+.blank {
+  margin-top: 100rpx;
+}
+
+.index {
+  display: flex;
+  align-items: center;
+  width: 690rpx;
+  height: 100rpx;
+  margin: 20rpx auto;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: rgba(176, 196, 222, 0.2);
+  border-radius: 20rpx !important;
+  box-sizing: border-box !important;
+  border: 1rpx solid rgba(253, 253, 251, 0.247) !important;
+}
+
+.index .label-icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 30rpx;
+    border-radius: 50%;
+}
+
+.index text {
+    flex: 1;
+}
+
+.index .right-icon {
+    width: 16rpx;
+    height: 28rpx;
+}
+
+.me{
+  display: flex;
+  align-items: center;
+  margin: 20rpx auto;
+  width: 690rpx;
+  height: 100rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 32rpx;
+  color: #2b2c4b;
+  background-color: rgba(223, 203, 20, 0.705);
+  border-radius: 20rpx !important;
+  box-sizing: border-box !important;
+  border: 1rpx solid rgba(223, 203, 20, 0.39) !important;
+}
+
+.me text {
+    flex: 1;
+}
+
+.me .right-icon {
+    width: 16rpx;
+    height: 28rpx;
+}
+
+#me{ 
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 62%;
+  bottom: 12%;
+  border:none;
+  background-image: url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gg2vYwtgvilVTMm.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  color:rgb(133, 48, 133);
+  z-index: 20; 
 }
 
 
 .container {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
-
 .times-wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.6);
-    z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9;
 }
 
 .times-wrap image {
-    width: 580rpx;
-    height: 580rpx;
+  width: 580rpx;
+  height: 580rpx;
 }
 
 .times-wrap text {
-    margin-top: 50rpx;
-    font-size: 38rpx;
-    color: #fff;
+  margin-top: 50rpx;
+  font-size: 38rpx;
+  color: rgb(255, 255, 255);
 }
 
 .no-permission-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: calc(100vh - 32rpx);
-    padding-top: 240rpx;
-    background-color: rgba(255,255,255,.9);
-    font-size: 32rpx;
-    color: #333;
-    z-index: 9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 32rpx);
+  padding-top: 240rpx;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 32rpx;
+  color: #333;
+  z-index: 9;
 }
 
 .no-permission-wrap image {
-    width: 120rpx;
-    height: 120rpx;
-    margin-bottom: 10rpx;
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 10rpx;
 }
 
 .no-permission-wrap text {
-    margin-top: 30rpx;
-    line-height: 1;
+  margin-top: 30rpx;
+  line-height: 1;
 }
 
 .no-permission-wrap .color-font {
-    color: #34A853;
-    font-weight: 600;
+  color: #34a853;
+  font-weight: 600;
 }
 
 .no-permission-wrap .btn {
-    width: 200rpx;
-    height: 80rpx;
-    margin-top: 40rpx;
-    text-align: center;
-    line-height: 80rpx;
-    background-color: #34A853;
-    color: #fff;
-    font-size: 30rpx;
-    border-radius: 10rpx;
+  width: 200rpx;
+  height: 80rpx;
+  margin-top: 40rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #34a853;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 10rpx;
 }
 
 button {
-    background: none;
-    border-radius: 0;
-    text-align: left;
+  background: none;
+  border-radius: 0;
+  text-align: left;
 }
 
 button::after {
-    border: none;
+  border: none;
 }

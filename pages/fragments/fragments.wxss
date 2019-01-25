@@ -1,5 +1,7 @@
 .content {
     padding: 0;
+    background: url("https://cloud-minapp-23332.cloud.ifanrusercontent.com/1gkklXFTWb3zE451.jpg");
+    background-size: cover;
 }
 
 .line {
@@ -72,5 +74,6 @@
     justify-content: center;
     padding-top: 200rpx;
     font-size: 32rpx;
-    color: #000;
+    color: #9b9494;
+  
 }

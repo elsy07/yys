@@ -11,13 +11,10 @@
     <view class="name ">{{membership.yys_name}} ({{userInfo.nickName}}) <wux-icon size="20" type="ios-create" /></view>
   </view>
 </view>
-<view class="user-content ">
+<view class="user-content">
       <wux-cell-group>
         <wux-cell title="登记式神碎片" is-link url="/pages/asset/asset" open-type="navigateTo"></wux-cell>
         <wux-cell title="我的兑换记录" is-link bindtap="showDevelop" url="/pages/trade/trade" open-type="navigateTo"></wux-cell>
         <wux-cell wx:if="{{membership.is_admin}}" title="成员管理" is-link url="/pages/admin/admin" open-type="navigateTo"></wux-cell>
-        <!-- <wux-cell title="改昵称" is-link url="/pages/changeName/changeName" open-type="navigateTo"></wux-cell> -->
-        <wux-cell title="联系客服" is-link open-type="contact" bind:contact="onContact"></wux-cell>
-
       </wux-cell-group>
 </view>

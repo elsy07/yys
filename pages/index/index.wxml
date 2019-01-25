@@ -1,4 +1,8 @@
 <view wx:if="{{dataIsLoaded}}">
+<view class="times-wrap" wx:if="{{show30Tips}}">
+        <image src="../../assets/imgs/30_1.jpg"></image>
+        <text bind:tap="show30" >【是的大姐！好的大姐！】</text>
+    </view>
   <view class="page-body">
     <view wx:if="{{isApprove}}">
     <!-- <button id="me" hover-class="none" bind:tap="onClickMe">个人中心</button> -->

@@ -27,6 +27,11 @@ Page({
       'test': 1546582147982185
     }
   },
+  show30: function () {
+    this.setData({
+      show30Tips: !1
+    })
+  },
 
   showDevelop: function() {
     wx.showToast({
@@ -34,12 +39,6 @@ Page({
       icon: "none",
       duration: 1500
     });
-  },
-
-  onClickMe: function() {
-    wx.navigateTo({
-      url: '/pages/mine/mine'
-    })
   },
 
   onLoad: function() {

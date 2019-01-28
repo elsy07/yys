@@ -2,6 +2,7 @@
 <view class="times-wrap" wx:if="{{show30Tips}}">
         <image src="../../assets/imgs/30_1.jpg"></image>
         <text bind:tap="show30" >【是的大姐！好的大姐！】</text>
+        <text>↑点它↑</text>
     </view>
   <view class="page-body">
     <view wx:if="{{isApprove}}">

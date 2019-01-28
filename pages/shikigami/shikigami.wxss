@@ -66,5 +66,4 @@ page {
     border-radius: 50%;
     box-shadow: 3rpx 5rpx 1rpx #fdb022; 
     box-sizing: border-box;
-    background-color: #fff;
 }

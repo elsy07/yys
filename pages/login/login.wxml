@@ -1,4 +1,4 @@
 <view class='login'>
-   <button wx:if="{{button}}" id="userinfo" hover-class="none"  open-type="getUserInfo" bindgetuserinfo="userInfoHandler">进入寮境</button>
+   <button wx:if="{{button}}" id="userinfo" hover-class="none"  open-type="getUserInfo" bindgetuserinfo="userInfoHandler"></button> 
     </view>
 

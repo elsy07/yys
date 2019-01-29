@@ -70,14 +70,22 @@ Page({
     console.log("踢出", e.target.dataset.id)
     //不同意
     let Membership = new wx.BaaS.TableObject(61452)
+    let Fragment = new wx.BaaS.TableObject('fragments')
+    let query = new wx.BaaS.Query()
+    query.compare('member', '=', Membership.getWithoutData(e.target.dataset.id))
     Membership.delete(e.target.dataset.id).then(res => {
       // success
-      console.log(res)
-      wx.showToast({
+      Fragment.limit(50).delete(query).then(res => {
+        console.log("共",res.data.total_count,"个碎片记录，删除",res.data.succeed,"条")
+        wx.showToast({
         title: '已踢出',
         icon: 'success',
         duration: 2000
       })
+      }, err => {
+        console.log(err)
+      })
+      
     }, err => {
       // err
       console.log(err)

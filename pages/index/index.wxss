@@ -7,6 +7,16 @@ page {
   margin-top: 100rpx;
 }
 
+.btn {
+    margin-top: 60rpx;
+    line-height: 54rpx;
+    text-align: center;
+    font-size: 36rpx;
+    border-radius: 10rpx;
+    color: #fff;
+    background-color: #34A853;
+}
+
 .index {
   display: flex;
   align-items: center;

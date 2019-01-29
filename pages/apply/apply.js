@@ -20,7 +20,8 @@ Page({
       state: 0,
       is_approve: false,
       yys_id: e.detail.value.yys_id,
-      yys_name: e.detail.value.yys_name
+      yys_name: e.detail.value.yys_name,
+      formid: e.detail.formId
     })
     member.save()
     wx.navigateTo({

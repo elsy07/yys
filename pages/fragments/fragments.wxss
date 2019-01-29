@@ -54,7 +54,7 @@
 }
 
 .btn {
-    width: 120rpx;
+    width: 160rpx;
     height: 54rpx;
     line-height: 54rpx;
     text-align: center;

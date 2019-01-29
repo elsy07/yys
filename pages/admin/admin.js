@@ -20,6 +20,7 @@ Page({
     })
     member.update().then(res => {
       // success
+      
       wx.showToast({
         title: '已通过',
         icon: 'success',

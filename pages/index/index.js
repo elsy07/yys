@@ -27,10 +27,23 @@ Page({
       'test': 1546582147982185
     }
   },
-  show30: function () {
-    this.setData({
-      show30Tips: !1
+  show30: function(e) {
+    console.log(e)
+    var that = this
+    let mem_id = wx.BaaS.storage.get("Membership").id
+    let form_id = e.detail.formId
+    console.log("更新formid：",form_id)
+    let Membership = new wx.BaaS.TableObject(61452)
+    let member = Membership.getWithoutData(mem_id)
+    member.set("formid", form_id)
+    member.update().then(res => { 
+      that.setData({
+        show30Tips: !1
+      })
+    }, err => {
+      // err
     })
+
   },
 
   showDevelop: function() {
@@ -66,7 +79,7 @@ Page({
         //注册未通过
         if (res.data.objects[0].is_approve) {
           //注册已通过
-          wx.BaaS.storage.set('Membership',res.data.objects[0])
+          wx.BaaS.storage.set('Membership', res.data.objects[0])
           that.setData({
             isApprove: true,
             isAdmin: res.data.objects[0].is_admin,

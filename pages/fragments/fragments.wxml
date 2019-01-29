@@ -1,3 +1,4 @@
+
 <view class="container" wx:if="{{dataIsLoaded}}">
   <scroll-view scrollY class="content" style="height: 100%" wx:if="{{data.length>0}}">
     <view class="line" wx:for="{{data}}" wx:key="{{index}}">
@@ -15,7 +16,11 @@
             <text wx:if="{{item.member.canBuy}}">可人民币买卖</text>
           </view>
         </view>
-        <view bindtap="onClickPY" class="btn" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragnum="{{item.num}}" data-fragname="{{item.shikigamiName}}">请求交易</view>
+        <form report-submit bindsubmit='onClickPY' class='btn' 
+        wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragnum="{{item.num}}" data-fragname="{{item.shikigamiName}}" data-seller="{{item.user.openid}}" data-formid="{{item.member.formid}}">
+        <button form-type="submit" class='btn'>请求交易</button>
+         <!-- <view bindtap="onClickPY" class="btn" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragnum="{{item.num}}" data-fragname="{{item.shikigamiName}}">请求交易</view> -->
+         </form>
         <view class="btn disabled" wx:if="{{item.state == 1}}">正在交易</view>
       </view>
 
@@ -24,3 +29,4 @@
     哇，这个碎片太稀缺了，暂时没人登记！
   </view>
 </view>
+ 

@@ -1,45 +1,46 @@
 <view wx:if="{{dataIsLoaded}}">
-<view class="times-wrap" wx:if="{{show30Tips}}">
-        <image src="../../assets/imgs/30_1.jpg"></image>
-        <text bind:tap="show30" >【是的大姐！好的大姐！】</text>
-        <text>↑点它↑</text>
+  <form report-submit bindsubmit='show30' class='btn'>
+    <view class="times-wrap" wx:if="{{show30Tips}}">
+      <image src="../../assets/imgs/30_1.jpg"></image>
+      <button form-type="submit" class='btn'>是的大姐！好的大姐!</button>
     </view>
+  </form>
   <view class="page-body">
     <view wx:if="{{isApprove}}">
-    <!-- <button id="me" hover-class="none" bind:tap="onClickMe">个人中心</button> -->
+      <!-- <button id="me" hover-class="none" bind:tap="onClickMe">个人中心</button> -->
       <view class="blank"></view>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.activity}}">
-            <text>1、活动时间安排</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.mission}}">
-            <text>2、寮任务要求</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/shikigami/shikigami">
-            <text>3、碎片互换</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.benefits}}">
-            <text>4、福利一览</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionD}}">
-            <text>5、道馆攻略</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionS}}">
-            <text>6、真蛇攻略</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionY}}">
-            <text>7、屯屯鼠攻略</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
-        <navigator class="me" hoverClass="none" url="/pages/mine/mine">
-            <text>@ 个人中心--登记碎片</text>
-            <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
-        </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.activity}}">
+        <text>1、活动时间安排</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.mission}}">
+        <text>2、寮任务要求</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/shikigami/shikigami">
+        <text>3、碎片互换</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.benefits}}">
+        <text>4、福利一览</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionD}}">
+        <text>5、道馆攻略</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionS}}">
+        <text>6、真蛇攻略</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="index" hoverClass="none" url="/pages/content/content?groupid={{groups.release}}&id={{contents.solutionY}}">
+        <text>7、屯屯鼠攻略</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
+      <navigator class="me" hoverClass="none" url="/pages/mine/mine">
+        <text>@ 个人中心--登记碎片</text>
+        <image class="right-icon" src="../../assets/imgs/right-icon.png"></image>
+      </navigator>
     </view>
     <view wx:else>
       <view class="no-permission-wrap" wx:if="{{!isApply}}">

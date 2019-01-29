@@ -17,8 +17,12 @@
         </view>
       </view>
       <view>
-        <view bindtap="onClickConfirm" class="btn confirm" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">交易成功</view>
-        <view bindtap="onClickCancel" class="btn cancel" wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">取消交易</view>
+      <form report-submit bindsubmit='onClickConfirm' class='btn' wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">
+        <button form-type="submit" class="btn confirm">交易成功</button>
+        </form>
+        <form report-submit bindsubmit='onClickCancel' class='btn' wx:if="{{item.state == 0}}" id="{{item.id}}" data-fragid="{{item.fragment.id}}">
+        <button form-type="submit" class="btn cancel">取消交易</button>
+        </form>
         <view class="btn success" wx:if="{{item.state == 1}}">交易成功</view>
         <view class="btn disabled" wx:if="{{item.state == 2}}">交易失败</view>
       </view>

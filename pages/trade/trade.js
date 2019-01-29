@@ -6,7 +6,7 @@ Page({
    */
   data: {
     dataIsLoaded: !1,
-    tmp:[],
+    tmp: [],
     trades: [],
     fragments: []
   },
@@ -75,11 +75,21 @@ Page({
         state: 1
       })
       trade.update().then(res => {
-        wx.showToast({
-          title: '碎片已换出',
-          icon: 'success'
+        let mem_id = wx.BaaS.storage.get("Membership").id
+        let form_id = e.detail.formId
+        console.log("更新formid：", form_id)
+        let Membership = new wx.BaaS.TableObject(61452)
+        let member = Membership.getWithoutData(mem_id)
+        member.set("formid", form_id)
+        member.update().then(res => {
+          wx.showToast({
+            title: '碎片已换出',
+            icon: 'success'
+          })
+          that.getData()
+        }, err => {
+          // err
         })
-        that.getData()
       }, err => {
         console.log(err)
         wx.showToast({
@@ -116,10 +126,21 @@ Page({
         state: 2
       })
       trade.update().then(res => {
-        wx.showToast({
-          title: '碎片恢复可交易状态',
-          icon: 'success'
+        let mem_id = wx.BaaS.storage.get("Membership").id
+        let form_id = e.detail.formId
+        console.log("更新formid：", form_id)
+        let Membership = new wx.BaaS.TableObject(61452)
+        let member = Membership.getWithoutData(mem_id)
+        member.set("formid", form_id)
+        member.update().then(res => {
+          wx.showToast({
+            title: '碎片恢复可交易状态',
+            icon: 'success'
+          })
+        }, err => {
+          // err
         })
+
         that.getData()
       }, err => {
         console.log(err)

@@ -99,7 +99,7 @@ Page({
           "template_id": 'OY7l0IZnsmk2_JRfBylmnny4-bZxPxwpk7P08ZW7FNc',
           "page": '/pages/index/index',
           "form_id": formId,
-          "data": { //模板消息要对应 有几个写几个  避免为空模板
+          "data": { 
             "keyword1": {
               "value": yys_name,
               "color": "#4a4a4a"

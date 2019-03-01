@@ -1,5 +1,0 @@
-<wux-wing-blank size="default">
-  <wux-card bindtap="onClick" id="{{item.id}}" data-groupid="{{item.group_id}}" wx:for="{{contents}}" wx:key="{{item.id}}" title="{{item.title}}" extra="点我" thumb="{{item.cover}}" >
-    <view slot="body">{{item.description}}</view>
-  </wux-card>
-</wux-wing-blank>

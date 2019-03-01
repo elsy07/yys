@@ -20,7 +20,7 @@ Page({
     //queryF.compare('state', '=', '1')
 
     //查询碎片记录
-    Fragments.setQuery(queryF).expand(['member', 'user']).find().then(res => {
+    Fragments.setQuery(queryF).expand(['member', 'user']).limit(1000).find().then(res => {
       that.data.fragments = res.data.objects
       that.data.tmp = []
       for (var i in that.data.fragments) {
@@ -31,7 +31,7 @@ Page({
         console.log(Fragment)
         let queryT = new wx.BaaS.Query()
         queryT.compare('fragment', '=', Fragment)
-        Trades.setQuery(queryT).expand(['fragment', 'buyer']).orderBy('-created_at').find().then(res => {
+        Trades.setQuery(queryT).expand(['fragment', 'buyer']).orderBy('-created_at').limit(1000).find().then(res => {
           that.data.tmp.push.apply(that.data.tmp, res.data.objects)
           that.setData({
             dataIsLoaded: 1,

@@ -29,7 +29,7 @@ Page({
     query.compare('shikigami', '=', id)
 
     //查询碎片记录
-    Fragment.setQuery(query).expand(['member', 'user']).find().then(res => {
+    Fragment.setQuery(query).expand(['member', 'user']).limit(1000).find().then(res => {
       let tmp = []
       for (var i in res.data.objects) {
         if (res.data.objects[i].num > 0) {

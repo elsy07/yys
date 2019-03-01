@@ -3,11 +3,13 @@ var app = getApp();
 Page({
   data: {
     activeIndex: 'ssr',
-    type: ['ssr', 'sp', '联动'],
+    type: ['ssr', 'sp', '联动','sr','皮肤'],
     shikigami: {
       'ssr':[],
       'sp':[],
-      '联动':[]
+      '联动':[],
+      'sr':[],
+      '皮肤':[]
     },
     shikigamiByType: [],
     dataIsLoaded: !1
@@ -68,9 +70,27 @@ Page({
       console.error(err)
     })
 
+    //查找所有sr    
+    let sr = new wx.BaaS.Query()
+    sr.compare('type', '=', 'sr')
+    shikigami.setQuery(sr).limit(50).find().then(res => {
+      // success
+      that.data.shikigami['sr'] = res.data.objects
+    }, err => {
+      // err
+      console.error(err)
+    })
 
-
-
+    //查找所有皮肤
+    let skin = new wx.BaaS.Query()
+    skin.compare('type', '=', '皮肤')
+    shikigami.setQuery(skin).limit(50).find().then(res => {
+      // success
+      that.data.shikigami['皮肤'] = res.data.objects
+    }, err => {
+      // err
+      console.error(err)
+    })
 
   },
 

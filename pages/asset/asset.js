@@ -9,7 +9,7 @@ Page({
     canSell: false,
     canBuy: false,
     activeIndex: 'ssr',
-    type: ['ssr', 'sp', '联动'],
+    type: ['ssr', 'sp', '联动','sr','皮肤'],
     shikigami: {},
     shikigamiName: '',
     shikigamiByType: [],
@@ -33,7 +33,7 @@ Page({
     let uid = wx.BaaS.storage.get("uid")
     let queryF = new wx.BaaS.Query()
     queryF.compare('created_by', '=', uid)
-    Fragment.setQuery(queryF).select(['shikigami', 'num', 'canSell']).find().then(res => {
+    Fragment.setQuery(queryF).select(['shikigami', 'num', 'canSell']).limit(1000).find().then(res => {
       console.log(res)
       this.data.myAssets = res.data.objects
 
@@ -47,6 +47,8 @@ Page({
         var ssr = []
         var sp = []
         var ld = []
+        var sr = []
+        var skin = []
 
         for (var i in that.data.shikigamiAll) {
           for (var j in that.data.myAssets) {
@@ -64,13 +66,21 @@ Page({
           if (that.data.shikigamiAll[i].type == '联动') {
             ld.push(that.data.shikigamiAll[i])
           }
+          if (that.data.shikigamiAll[i].type == 'sr') {
+            sr.push(that.data.shikigamiAll[i])
+          }
+          if (that.data.shikigamiAll[i].type == '皮肤') {
+            skin.push(that.data.shikigamiAll[i])
+          }
         }
 
         that.setData({
           shikigami: {
             'ssr': ssr,
             'sp': sp,
-            '联动': ld
+            '联动': ld,
+            'sr': sr,
+            '皮肤': skin
           }
         })
 
@@ -82,6 +92,11 @@ Page({
         if (that.data.activeIndex == 'sp') {
           that.setData({
             shikigamiByType: that.data.shikigami.sp
+          })
+        }
+        if (that.data.activeIndex == 'sr') {
+          that.setData({
+            shikigamiByType: that.data.shikigami['sr']
           })
         }
         if (that.data.activeIndex == '联动') {
@@ -263,7 +278,7 @@ Page({
     query.compare('shikigami', '=', this.data.shikigamiID)
 
     //查询是否有记录
-    Fragment.setQuery(query).find().then(res => {
+    Fragment.setQuery(query).limit(1).find().then(res => {
       //如果没有登记过，新建记录
       if (res.data.meta.total_count == 0) {
         let asset = Fragment.create()

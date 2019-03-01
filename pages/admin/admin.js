@@ -105,7 +105,7 @@ Page({
     var User = new wx.BaaS.User()
 
     let query = new wx.BaaS.Query()
-    Membership.setQuery(query).expand('user').find().then(res => {
+    Membership.setQuery(query).expand('user').limit(1000).find().then(res => {
       // success
       console.log("members", res.data)
       that.setData({
